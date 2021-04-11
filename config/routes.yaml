@@ -1,0 +1,55 @@
+index:
+   path: /
+   controller: App\Controller\DefaultController::index
+
+add_hotel:
+   path: /hotels/add
+   controller: App\Controller\HotelController::add
+
+get_one_hotel:
+   path: /hotels/get/{id}
+   controller: App\Controller\HotelController::get
+
+get_all_hotels:
+   path: /hotels/getAll
+   controller: App\Controller\HotelController::getAll
+
+update_hotel:
+   path: /hotels/update/{id}
+   controller: App\Controller\HotelController::update
+
+delete_hotel:
+   path: /hotels/delete/{id}
+   controller: App\Controller\HotelController::delete
+
+add_apartment:
+   path: /apartments/add
+   controller: App\Controller\ApartmentController::add
+
+get_one_apartment:
+   path: /apartments/{id}
+   controller: App\Controller\ApartmentController::get
+
+get_all_apartments:
+   path: /apartments/getAll
+   controller: App\Controller\ApartmentController::getAll
+
+update_apartment:
+   path: /apartments/update/{id}
+   controller: App\Controller\ApartmentController::update
+
+delete_apartment:
+   path: /apartments/delete/{id}
+   controller: App\Controller\ApartmentController::delete
+
+apartments_by_hotel:
+   path: /apartments/hotel/{id}
+   controller: App\Controller\ApartmentController::listByHotel
+
+authentication_token:
+    path: /authentication_token
+    methods: ['POST']
+
+list_hotels:
+   path: /hotels/list
+   controller: App\Controller\HotelController::list

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hotels{% endblock %}
+
+{% block body %}
+    
+    {{ form(hotel_form) }}
+
+    {% for hotel in hotels %}
+        <h2>{{ hotel.name }}</h2>
+        <a href = "{{ asset(hotel.url) }}" target="_blank" >See photos</a>
+        <h4>Address: {{ hotel.place }}</h4>
+        {% if hotel.apartments|length > 0 %}
+            <div>
+                <a href="#" class="show_apartment">Show apartments</a>
+                <div class="apartments" style="display: none">
+                    {% for apartment in hotel.apartments %}
+                        {% include "apartment.html.twig" %}
+                    {% endfor %}
+                    <a href="#" class="hide_apartment">Hide apartments</a>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+
+<script>
+    $(document).ready(function () {
+        $('.show_apartment').on('click', function (e) {
+            e.preventDefault();
+            var apartments = $(this).siblings(".apartments");
+            $(this).hide();
+            apartments.show();
+        });
+        $('.hide_apartment').on('click', function (e) {
+            e.preventDefault();
+            var apartments = $(this).parent();
+            $(this).siblings(".show_apartment").show();
+            apartments.hide();
+        });
+    });
+</script>
+{% endblock %}
